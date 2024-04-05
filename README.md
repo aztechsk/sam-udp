@@ -2,7 +2,7 @@
 # sam-udp
 
 The C library **sam-udp** provides an API for controlling the USB Device Port peripheral of the microcontroller.
-The supported devices include microcontrollers from the Microchip (Atmel) AT91 family, specifically the SAM3S and SAM4S chips.
+The supported devices include microcontrollers from the Microchip (Atmel) **AT91** family, specifically the ***SAM3S*** and ***SAM4S*** chips.
 
 ### Library features
 
