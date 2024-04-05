@@ -8,6 +8,6 @@ The supported devices include microcontrollers from the Microchip (Atmel) **AT91
 
 - Standardized API (for the AZTech framework).
 - Handling of low-level USB device port events and states (the USB Device Port interrupt).
-- Communication through USB I/O request packet functions (the udp\_in\_irp(), udp\_out\_irp() functions).
+- Communication through USB I/O request packet functions (the udp\_in\_irp(), udp\_out\_irp()).
 - Designed for real-time multitasking applications (dependent on FreeRTOS).
 - Extended debugging features.
