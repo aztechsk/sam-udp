@@ -1,7 +1,7 @@
 /*
  * udp.c
  *
- * Copyright (c) 2023 Jan Rusnak <jan@rusnak.sk>
+ * Copyright (c) 2024 Jan Rusnak <jan@rusnak.sk>
  *
  * Permission to use, copy, modify, and distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -427,7 +427,7 @@ int udp_out_irp(int epn, void *buf, int size, int min_rcv_nmb, int *rcv_nmb)
 	xQueueReceive(ep->que, &sig, portMAX_DELAY);
 	*rcv_nmb = ep->cnt;
 	switch (sig) {
-	case UDP_ISR_SIG_IRP_DONE     :
+	case UDP_ISR_SIG_IRP_DONE :
 		return (0);
 	case UDP_ISR_SIG_IRP_BUF_FULL :
 		return (-EBFOV);
@@ -461,13 +461,13 @@ void enable_udp_endp(int epn, enum udp_endp_type etp)
 		endp_arry[epn].last_bank = 1;
 		endp_arry[epn].banks_nmb = endp_banks_nmb(epn);
 		switch (etp) {
-		case UDP_ISO_OUT_ENDP  :
+		case UDP_ISO_OUT_ENDP :
 			/* FALLTHRU */
 		case UDP_BULK_OUT_ENDP :
 			/* FALLTHRU */
-		case UDP_ISO_IN_ENDP   :
+		case UDP_ISO_IN_ENDP :
 			/* FALLTHRU */
-		case UDP_BULK_IN_ENDP  :
+		case UDP_BULK_IN_ENDP :
 			if (endp_arry[epn].banks_nmb == 2) {
 				endp_arry[epn].pp_mode = TRUE;
 			} else {
@@ -1528,13 +1528,13 @@ static const char *eps(int ep)
 	switch (endp_arry[ep].state) {
 	case EP_DISABLED_STATE :
 		return ("d");
-	case EP_HALTED_STATE   :
+	case EP_HALTED_STATE :
 		return ("h");
-	case EP_IDLE_STATE     :
+	case EP_IDLE_STATE :
 		return ("i");
-	case EP_ACTIVE_STATE   :
+	case EP_ACTIVE_STATE :
 		return ("a");
-	case EP_SUSP_STATE   :
+	case EP_SUSP_STATE :
 		return ("s");
 	default :
 		return ("");
@@ -1633,17 +1633,17 @@ static const char *endp_type_str(enum udp_endp_type endp_type);
 static const char *endp_type_str(enum udp_endp_type endp_type)
 {
 	switch (endp_type) {
-        case UDP_ISO_OUT_ENDP  :
+        case UDP_ISO_OUT_ENDP :
         	return ("iso_out");
         case UDP_BULK_OUT_ENDP :
         	return ("bulk_out");
-        case UDP_INT_OUT_ENDP  :
+        case UDP_INT_OUT_ENDP :
         	return ("int_out");
-        case UDP_ISO_IN_ENDP   :
+        case UDP_ISO_IN_ENDP :
         	return ("iso_in");
-        case UDP_BULK_IN_ENDP  :
+        case UDP_BULK_IN_ENDP :
         	return ("bulk_in");
-        case UDP_INT_IN_ENDP   :
+        case UDP_INT_IN_ENDP :
         	return ("int_in");
 	default :
         	return ("ctrl");
